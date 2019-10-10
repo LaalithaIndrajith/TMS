@@ -1,0 +1,19 @@
+.btn{
+  width:120px;
+  margin-left: 5px;
+  margin-right: 50px;
+}
+
+#lookupUser_row{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#selectedRows{
+  width:200px;
+
+}
+
+table {
+  width: 100%;
+}

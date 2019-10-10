@@ -1,0 +1,240 @@
+<div class="container">
+  <div class="row">
+
+    <!-- Left Panel -->
+    <div class="col-lg-3 md-3 sm-12">
+
+    </div>
+
+    <!-- Right Panel -->
+    <div class="col-lg-9 md-9 sm-12">
+
+      <div class="row my-2">
+        <div class="col-lg-6 md-4 sm-12">
+          <h5>Add User</h5>
+        </div>
+        <div class="col-lg-6 md-8 sm-12">
+          <form  name="adduser_form" [formGroup]="adduser_form">
+          <div class="row">
+
+              <div class="col-lg-4 md-4 sm-12 px-1">
+                  <button type="button" class="btn btn-primary mt-1 " [disabled]="adduser_form.invalid"><fa-icon [icon]="faSave"></fa-icon>&nbsp;Save</button>
+              </div>
+              <div class="col-lg-4 md-4 sm-12 px-1">
+                  <button type="button" class="btn btn-success mt-1 " (click)="viewLookUp()"><fa-icon [icon]="faEye"></fa-icon>&nbsp;Lookup</button>
+              </div>
+              <div class="col-lg-4 md-4 sm-12 px-1">
+                  <button type="button" class="btn btn-warning mt-1 "><fa-icon [icon]="faSync"></fa-icon>&nbsp;Reset</button>
+              </div>
+
+          </div>
+        </form>
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">Master</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">User</li>
+                </ol>
+              </nav>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-3 md-12 sm-12">
+          <h5>User Creation</h5>
+        </div>
+        <div class="col-9">
+          <p class="font-weight-light">Showing user details for user creation or modification</p>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-lg-6 md-6 sm-12">
+            <h6 class="font-weight-bold">Basic Infromation</h6>
+            <form name="adduser_form" [formGroup]="adduser_form">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="input_firstname" formControlName="firstname"
+                    [ngClass]="{'is-invalid':adduser_form.get('firstname').touched && adduser_form.get('firstname').invalid}">
+                    <div class="invalid-feedback">
+                        <div>First Name is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="input_lastname" formControlName="lastname"
+                    [ngClass]="{'is-invalid':adduser_form.get('lastname').touched && adduser_form.get('lastname').invalid}">
+                    <div class="invalid-feedback">
+                        <div>Last Name is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="select_gender" formControlName="selectGender"
+                    [ngClass]="{'is-invalid':adduser_form.get('selectGender').touched && adduser_form.get('selectGender').invalid}">
+                      <option>Select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <div>This field is required.</div>
+                    </div>
+                </div>
+            </form>
+            <hr/>
+            <h6 class="font-weight-bold">Contact Infromation</h6>
+            <form name="adduser_form" [formGroup]="adduser_form">
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+
+                    <input type="text" class="form-control" id="input_phone" minlength="10" maxlength="10" formControlName="inputPhone"
+                    [ngClass]="{'is-invalid':adduser_form.get('inputPhone').touched && adduser_form.get('inputPhone').invalid}">
+                    <div *ngIf="adduser_form.get('inputPhone').touched && adduser_form.get('inputPhone').invalid" class="invalid-feedback">
+                        <div *ngIf="adduser_form.get('inputPhone').errors.required">Phone number is required</div>
+                        <div *ngIf="adduser_form.get('inputPhone').errors.minlength">Please enter a valid phone number</div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="input_email" formControlName="inputEmail"
+                    [ngClass]="{'is-invalid':adduser_form.get('inputEmail').touched && adduser_form.get('inputEmail').invalid}">
+                    <div *ngIf="adduser_form.get('inputEmail').touched && adduser_form.get('inputEmail').invalid" class="invalid-feedback">
+                        <div *ngIf="adduser_form.get('inputEmail').errors.required" >Email address is required</div>
+                        <div *ngIf="adduser_form.get('inputEmail').errors.email" >Please enter a valid email address</div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-6 md-6 sm-12">
+            <h6 class="font-weight-bold">User Infromation</h6>
+            <form name="adduser_form" [formGroup]="adduser_form">
+            <div class="row">
+              <div class="col-lg-6 md-6 sm-12">
+                  <div class="form-group">
+                      <label for="package">Package</label>
+                      <select class="form-control" id="select_package" formControlName="selectPackage"
+                      [ngClass]="{'is-invalid':adduser_form.get('selectPackage').touched && adduser_form.get('selectPackage').invalid}">
+                        <option>Select Package</option>
+
+                      </select>
+                      <div class="invalid-feedback">
+                        <div>Please choose a Package</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="customer">Customer</label>
+                      <select class="form-control" id="select_customer" formControlName="selectCustomer"
+                      [ngClass]="{'is-invalid':adduser_form.get('selectCustomer').touched && adduser_form.get('selectCustomer').invalid}">
+                        <option>Select Customer</option>
+
+                      </select>
+                      <div class="invalid-feedback">
+                          <div>Please select a Customer</div>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="col-lg-6 md-6 sm-12">
+                <div class="form-group">
+                      <label for="company">Company</label>
+                      <select class="form-control" id="select_company" formControlName="selectCompany"
+                      [ngClass]="{'is-invalid':adduser_form.get('selectCompany').touched && adduser_form.get('selectCompany').invalid}">
+                        <option>Select Company</option>
+
+                      </select>
+                      <div class="invalid-feedback">
+                          <div>Please select a Company</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="branch">Branch</label>
+                      <select class="form-control" id="select_branch" formControlName="selectBranch"
+                      [ngClass]="{'is-invalid':adduser_form.get('selectBranch').touched && adduser_form.get('selectBranch').invalid}">
+                        <option>Select Branch</option>
+
+                      </select>
+                      <div class="invalid-feedback">
+                          <div>Please select a Branch</div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="username">User Name</label>
+                    <input type="text" class="form-control" id="input_username" formControlName="inputUsername"
+                    [ngClass]="{'is-invalid':adduser_form.get('inputUsername').touched && adduser_form.get('inputUsername').invalid}">
+                    <div class="invalid-feedback">
+                        <div>User name is required.</div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="input_password" formControlName="inputPassword"
+                    [ngClass]="{'is-invalid':adduser_form.get('inputPassword').touched && adduser_form.get('inputPassword').invalid}">
+                    <div *ngIf="adduser_form.get('inputPassword').touched && adduser_form.get('inputPassword').invalid" class="text-danger">
+                        <div class="small" *ngIf="adduser_form.get('inputPassword').errors.required">Password is required</div>
+                        <div class="small" *ngIf="adduser_form.get('inputPassword').errors.minlength">Password must be atleast 8 characters long</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" formControlName="confirmPassword" appCompareValidator="inputPassword"
+                    [ngClass]="{'is-invalid':adduser_form.get('confirmPassword').touched && adduser_form.get('confirmPassword').invalid}">
+                    <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="text-danger">
+                      <div class="small" *ngIf="confirmPassword.errors['required']">Confirm Password is required</div>
+                      <div class="small" *ngIf="confirmPassword.errors['appCompareValidator']">Password confirm do not match</div>
+                  </div>
+
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 md-6 sm-12">
+                  <!-- <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="toggle_status">
+                      <label class="custom-control-label" for="status">Status</label>
+                  </div> -->
+                  <label for="status">Status</label>
+                  <ng-switchery color="switchery-success"></ng-switchery>
+              </div>
+              <div class="col-lg-6 md-6 sm-12">
+                
+                  <div class="form-group">
+                      <label for="userGroup">User Group</label>
+                      <select class="form-control" id="select_userGroup">
+                        <option>Select User Group</option>
+
+                      </select>
+                  </div>
+
+              </div>
+            </div>
+
+
+            </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
